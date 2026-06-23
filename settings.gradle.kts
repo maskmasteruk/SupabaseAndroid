@@ -10,6 +10,8 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+
+    includeBuild("./supabaseandroidplugin")
 }
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
@@ -24,5 +26,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "SupabaseAndroid"
 include(":app")
-include(":supabase-plugin")
-include(":supabase-sdk")
+include(":supabaseandroidsdk")

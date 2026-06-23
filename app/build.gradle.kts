@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.maskmasteruk.supabaseandroid"
+    namespace = "com.maskmasteruk.supabaseandroidsdk"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -46,7 +46,7 @@ dependencies {
     implementation(libs.supabase.kt)
     implementation(libs.postgrest.kt)
     implementation(libs.ktor.client.okhttp)
-    implementation(project(":supabase-sdk"))
+    implementation(project(":supabaseandroidsdk"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
