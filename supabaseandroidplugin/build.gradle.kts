@@ -4,6 +4,7 @@ plugins {
     `java-gradle-plugin`
     `maven-publish`
 }
+
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
@@ -25,7 +26,7 @@ gradlePlugin {
         create("supabaseAndroid") {
             id = "com.maskmasteruk.supabaseandroid"
             implementationClass =
-                "com.maskmasteruk.plugin.SupabasePlugin"
+                "com.maskmasteruk.supabase_plugin.SupabasePlugin"
         }
     }
 }

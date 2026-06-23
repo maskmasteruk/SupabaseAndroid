@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.maskmasteruk.supabaseandroid")
 }
 
 android {
@@ -40,12 +41,7 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
     implementation(libs.material)
-
-    implementation(libs.auth.kt)
-    implementation(libs.storage.kt)
-    implementation(libs.supabase.kt)
-    implementation(libs.postgrest.kt)
-    implementation(libs.ktor.client.okhttp)
+    
     implementation(project(":supabaseandroidsdk"))
 
     testImplementation(libs.junit)

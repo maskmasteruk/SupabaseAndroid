@@ -5,9 +5,7 @@ plugins {
 
 android {
     namespace = "com.maskmasteruk.supabaseandroidsdk"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 24
@@ -15,37 +13,32 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-
-}
-
-dependencies {
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(libs.ext.junit)
-}
-
-android {
-    namespace = "com.maskmasteruk.supabasesdk"
 
     publishing {
         singleVariant("release") {
             withSourcesJar()
         }
     }
-
-    compileSdk = 36
-
-    defaultConfig {
-        minSdk = 24
-    }
 }
 
+dependencies {
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.auth.kt)
+    implementation(libs.storage.kt)
+    implementation(libs.supabase.kt)
+    implementation(libs.postgrest.kt)
+    implementation(libs.ktor.client.okhttp)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.ext.junit)
+}
 
 afterEvaluate {
     publishing {
