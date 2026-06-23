@@ -1,9 +1,15 @@
-package com.maskmasteruk.supabaseandroidsdk;
+package com.maskmasteruk.supabaseandroid;
 
 import java.util.Map;
 
+/**
+ * Global constants used throughout the Supabase Android SDK.
+ */
 public class CONSTANTS {
 
+    /**
+     * A mapping of Supabase Auth error codes to user-friendly error messages.
+     */
     public static final Map<String, String> AUTH_ERROR_MESSAGES = Map.ofEntries(
             Map.entry("UserAlreadyExists", "An account with this email already exists."),
             Map.entry("EmailAddressInvalid", "Please enter a valid email address."),

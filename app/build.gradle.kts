@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.maskmasteruk.supabaseandroidsdk"
+    namespace = "com.maskmasteruk.supabaseandroiddemo"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -42,7 +42,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.material)
     
-    implementation(project(":supabaseandroidsdk"))
+    implementation("com.maskmasteruk:supabaseandroid:1.0.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)

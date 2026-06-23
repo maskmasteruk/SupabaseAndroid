@@ -1,6 +1,6 @@
 [versions]
 agp = "9.2.1"
-authKt = "3.6.0"
+supabase = "3.6.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
@@ -12,16 +12,16 @@ activityKtx = "1.13.0"
 constraintlayout = "2.2.1"
 
 [libraries]
-auth-kt = { module = "io.github.jan-tennert.supabase:auth-kt", version.ref = "authKt" }
+auth-kt = { module = "io.github.jan-tennert.supabase:auth-kt", version.ref = "supabase" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktorClientOkhttp" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt", version.ref = "authKt" }
-supabase-kt = { module = "io.github.jan-tennert.supabase:supabase-kt", version.ref = "authKt" }
-storage-kt = { module = "io.github.jan-tennert.supabase:storage-kt", version.ref = "authKt" }
+postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt", version.ref = "supabase" }
+supabase-kt = { module = "io.github.jan-tennert.supabase:supabase-kt", version.ref = "supabase" }
+storage-kt = { module = "io.github.jan-tennert.supabase:storage-kt", version.ref = "supabase" }
 activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 

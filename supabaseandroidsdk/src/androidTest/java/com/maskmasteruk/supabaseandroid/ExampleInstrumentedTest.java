@@ -1,4 +1,4 @@
-package com.maskmasteruk.supabaseandroidsdk;
+package com.maskmasteruk.supabaseandroid;
 
 import static org.junit.Assert.assertEquals;
 
