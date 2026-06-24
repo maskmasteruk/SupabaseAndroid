@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    id("com.maskmasteruk.supabaseandroid")
+    id("io.github.maskmasteruk.supabaseandroid") version "1.0.0"
 }
 
 android {
@@ -42,7 +42,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.material)
     
-    implementation("com.maskmasteruk:supabaseandroid:1.0.0")
+    implementation("io.github.maskmasteruk:supabaseandroid:1.0.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
