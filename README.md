@@ -2,6 +2,47 @@
 
 This library provides a simplified bridge for using Supabase (Auth, Postgres, and Storage) in Android applications. It is designed to work seamlessly with both Java and Kotlin.
 
+## 0. Installation
+
+### Add Plugin and Dependency
+
+Add the following to your app-level `build.gradle.kts`:
+
+```kotlin
+plugins {
+    id("com.android.application")
+    id("io.github.maskmasteruk.supabaseandroid") version "1.0.0"
+}
+
+dependencies {
+    implementation("io.github.maskmasteruk:supabaseandroid:1.0.0")
+}
+```
+
+Ensure `mavenCentral()` is present in your `settings.gradle.kts`:
+
+```kotlin
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+```
+
+### Configuration
+
+Create a `supabase-config.json` file in your `app/` folder to store your credentials:
+
+```json
+{
+  "supabase_url": "https://your-project.supabase.co",
+  "supabase_anon_key": "your-anon-key"
+}
+```
+
+The `supabaseandroid` plugin will automatically read this file and generate `BuildConfig.SUPABASE_URL` and `BuildConfig.SUPABASE_ANON_KEY` for you.
+
 ## 1. Initialization
 
 Before using any Supabase features, you must initialize the `AuthManager`. This is typically done in your `MainActivity` or a custom `Application` class.
