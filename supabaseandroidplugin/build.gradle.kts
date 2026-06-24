@@ -26,7 +26,7 @@ mavenPublishing {
         }
         developers {
             developer {
-                id.set("udhayakrishna")
+                id.set("maskmasteruk")
                 name.set("Udhayakrishna K G")
                 email.set("k.g.u2006@gmail.com")
             }
