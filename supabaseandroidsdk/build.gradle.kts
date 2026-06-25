@@ -23,7 +23,7 @@ android {
 }
 
 mavenPublishing {
-    coordinates("io.github.maskmasteruk", "supabaseandroid", "1.0.0")
+    coordinates("io.github.maskmasteruk", "supabaseandroid", "1.0.1")
 
     pom {
         name.set("Supabase Android SDK")
@@ -45,7 +45,7 @@ mavenPublishing {
         scm {
             connection.set("scm:git:github.com/maskmasteruk/SupabaseAndroid.git")
             developerConnection.set("scm:git:ssh://github.com/maskmasteruk/SupabaseAndroid.git")
-            url.set("https://github.com/maskmasteruk/SupabaseAndroid/tree/main")
+            url.set("https://github.com/maskmasteruk/SupabaseAndroid/tree/master")
         }
     }
     
@@ -56,10 +56,10 @@ mavenPublishing {
 dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.auth.kt)
-    implementation(libs.storage.kt)
-    implementation(libs.supabase.kt)
-    implementation(libs.postgrest.kt)
+    api(libs.auth.kt)
+    api(libs.storage.kt)
+    api(libs.supabase.kt)
+    api(libs.postgrest.kt)
     implementation(libs.ktor.client.okhttp)
 
     testImplementation(libs.junit)

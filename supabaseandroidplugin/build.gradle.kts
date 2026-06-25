@@ -34,7 +34,7 @@ mavenPublishing {
         scm {
             connection.set("scm:git:github.com/maskmasteruk/SupabaseAndroid.git")
             developerConnection.set("scm:git:ssh://github.com/maskmasteruk/SupabaseAndroid.git")
-            url.set("https://github.com/maskmasteruk/SupabaseAndroid/tree/main")
+            url.set("https://github.com/maskmasteruk/SupabaseAndroid/tree/master")
         }
     }
 
