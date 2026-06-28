@@ -17,14 +17,18 @@ object StorageManager {
      * @param bucket The bucket ID.
      * @param path The file path in the bucket.
      * @param file The file to upload.
+     * @param upsert Whether to overwrite the file if it already exists.
      * @return The public URL of the uploaded file.
      */
     suspend fun upload(
         bucket: String,
         path: String,
-        file: File
+        file: File,
+        upsert: Boolean = false
     ): String {
-        client().storage.from(bucketId = bucket).upload(path, file.readBytes())
+        client().storage.from(bucketId = bucket).upload(path, file.readBytes()) {
+            this.upsert = upsert
+        }
 
         return client().storage.from(bucket).publicUrl(path)
     }
@@ -35,6 +39,7 @@ object StorageManager {
      * @param bucket The bucket ID.
      * @param path The file path in the bucket.
      * @param uri The URI of the file.
+     * @param upsert Whether to overwrite the file if it already exists.
      * @return The public URL of the uploaded file.
      * @throws Exception if the file cannot be read.
      */
@@ -42,7 +47,8 @@ object StorageManager {
         context: Context,
         bucket: String,
         path: String,
-        uri: Uri
+        uri: Uri,
+        upsert: Boolean = false
     ): String {
 
         val bytes = context.contentResolver.openInputStream(uri)
@@ -57,6 +63,7 @@ object StorageManager {
 
         client().storage.from(bucketId = bucket).upload(path, bytes) {
             contentType = contentTypeValue
+            this.upsert = upsert
         }
 
         return client().storage.from(bucket).publicUrl(path)
@@ -68,13 +75,15 @@ object StorageManager {
      * @param path The file path in the bucket.
      * @param bytes The raw data.
      * @param mimeType The MIME type of the data.
+     * @param upsert Whether to overwrite the file if it already exists.
      * @return The public URL of the uploaded file.
      */
     suspend fun upload(
         bucket: String,
         path: String,
         bytes: ByteArray,
-        mimeType: String?
+        mimeType: String?,
+        upsert: Boolean = false
     ): String {
         val contentTypeValue = mimeType?.let {
             ContentType.parse(it)
@@ -82,6 +91,7 @@ object StorageManager {
 
         client().storage.from(bucketId = bucket).upload(path, bytes) {
             contentType = contentTypeValue
+            this.upsert = upsert
         }
 
         return client().storage.from(bucket).publicUrl(path)

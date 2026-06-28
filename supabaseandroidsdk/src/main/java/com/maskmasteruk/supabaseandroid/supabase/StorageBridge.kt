@@ -54,18 +54,21 @@ object StorageBridge {
      * @param path The destination path in the bucket.
      * @param file The file to upload.
      * @param callback Callback for success or error.
+     * @param upsert Whether to overwrite the file if it already exists.
      */
     @JvmStatic
+    @JvmOverloads
     fun uploadFile(
         bucket: String,
         path: String,
         file: File,
-        callback: UploadCallback
+        callback: UploadCallback,
+        upsert: Boolean = false
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val url = StorageManager.upload(
-                    bucket, path, file
+                    bucket, path, file, upsert
                 )
 
                 withContext(Dispatchers.Main) {
@@ -88,19 +91,22 @@ object StorageBridge {
      * @param path The destination path in the bucket.
      * @param uri The URI of the file to upload.
      * @param callback Callback for success or error.
+     * @param upsert Whether to overwrite the file if it already exists.
      */
     @JvmStatic
+    @JvmOverloads
     fun uploadFile(
         context: Context,
         bucket: String,
         path: String,
         uri: Uri,
-        callback: UploadCallback
+        callback: UploadCallback,
+        upsert: Boolean = false
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val url = StorageManager.upload(
-                    context, bucket, path, uri
+                    context, bucket, path, uri, upsert
                 )
 
                 withContext(Dispatchers.Main) {
@@ -123,19 +129,22 @@ object StorageBridge {
      * @param bytes The byte array to upload.
      * @param mimeType The MIME type of the file.
      * @param callback Callback for success or error.
+     * @param upsert Whether to overwrite the file if it already exists.
      */
     @JvmStatic
+    @JvmOverloads
     fun uploadBytes(
         bucket: String,
         path: String,
         bytes: ByteArray,
         mimeType: String,
-        callback: UploadCallback
+        callback: UploadCallback,
+        upsert: Boolean = false
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val url = StorageManager.upload(
-                    bucket, path, bytes, mimeType
+                    bucket, path, bytes, mimeType, upsert
                 )
 
                 withContext(Dispatchers.Main) {
