@@ -23,7 +23,7 @@ android {
 }
 
 mavenPublishing {
-    coordinates("io.github.maskmasteruk", "supabaseandroid", "1.0.2")
+    coordinates("io.github.maskmasteruk", "supabaseandroid", "1.0.3")
 
     pom {
         name.set("Supabase Android SDK")
