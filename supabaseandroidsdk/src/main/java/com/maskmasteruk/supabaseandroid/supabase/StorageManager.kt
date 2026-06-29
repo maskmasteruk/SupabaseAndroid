@@ -2,6 +2,7 @@ package com.maskmasteruk.supabaseandroid.supabase
 
 import android.content.Context
 import android.net.Uri
+import com.maskmasteruk.supabaseandroid.objects.SupabaseError
 import io.github.jan.supabase.storage.storage
 import io.ktor.http.ContentType
 import java.io.File
@@ -53,7 +54,7 @@ object StorageManager {
 
         val bytes = context.contentResolver.openInputStream(uri)
             ?.use { it.readBytes() }
-            ?: throw Exception("Unable to read file")
+            ?: throw SupabaseError("Unable to read file")
 
         val mimeType = context.contentResolver.getType(uri)
 

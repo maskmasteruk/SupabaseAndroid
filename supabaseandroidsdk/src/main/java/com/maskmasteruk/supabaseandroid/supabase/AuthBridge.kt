@@ -2,7 +2,7 @@ package com.maskmasteruk.supabaseandroid.supabase
 
 import android.content.Context
 import com.maskmasteruk.supabaseandroid.CONSTANTS.AUTH_ERROR_MESSAGES
-import com.maskmasteruk.supabaseandroid.objects.Error
+import com.maskmasteruk.supabaseandroid.objects.SupabaseError
 import io.github.jan.supabase.auth.exception.AuthRestException
 import io.github.jan.supabase.auth.user.UserInfo
 import kotlinx.coroutines.CoroutineScope
@@ -31,9 +31,9 @@ object AuthBridge {
 
         /**
          * Called when the authentication operation fails.
-         * @param error The error that occurred.
+         * @param supabaseError The error that occurred.
          */
-        fun onError(error: Error)
+        fun onError(supabaseError: SupabaseError)
     }
 
     private fun launchAuth(
@@ -47,7 +47,7 @@ object AuthBridge {
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    authCallback.onError(Error(e))
+                    authCallback.onError(SupabaseError(e))
                 }
             }
         }
@@ -83,13 +83,11 @@ object AuthBridge {
                 val message = AUTH_ERROR_MESSAGES[code] ?: "Authentication failed."
 
 
-                throw Exception(message)
+                throw SupabaseError(message)
 
             } catch (e: Exception) {
 
-                throw Exception(
-                    "Network error. Please try again.", e
-                )
+                throw SupabaseError(e)
             }
         }
 
@@ -127,12 +125,10 @@ object AuthBridge {
                 val code: String? = e.errorCode?.toString()
 
                 val message = AUTH_ERROR_MESSAGES[code] ?: "Authentication failed."
-                throw Exception(message)
+                throw SupabaseError(message)
 
             } catch (e: Exception) {
-                throw Exception(
-                    "Network error. Please try again.", e
-                )
+                throw SupabaseError(e)
             }
         }
 

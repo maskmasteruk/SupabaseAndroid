@@ -8,7 +8,7 @@ import com.maskmasteruk.supabaseandroid.CONSTANTS;
  * A wrapper class for exceptions and error messages to be passed back to the UI.
  * This class helps categorize errors and provides appropriate messages for display.
  */
-public class Error {
+public class SupabaseError extends Exception {
     /**
      * The underlying exception that occurred.
      */
@@ -20,12 +20,12 @@ public class Error {
     private boolean isUserFriendly = false;
 
     /**
-     * Constructs an Error from an Exception.
+     * Constructs an SupabaseError from an Exception.
      * The stack trace is printed to the console for debugging.
      *
      * @param exception The exception to wrap.
      */
-    public Error(Exception exception) {
+    public SupabaseError(Exception exception) {
         if (CONSTANTS.AUTH_ERROR_MESSAGES.containsValue(exception.getMessage())) {
             setUserFriendly(true);
         }
@@ -33,12 +33,12 @@ public class Error {
     }
 
     /**
-     * Constructs an Error from a user-friendly message string.
+     * Constructs an SupabaseError from a user-friendly message string.
      * This creates a new Exception with the provided message and marks it as user-friendly.
      *
      * @param s The user-facing error message.
      */
-    public Error(String s) {
+    public SupabaseError(String s) {
         this.exception = new Exception(s);
         setUserFriendly(true);
     }
@@ -94,15 +94,15 @@ public class Error {
      * Sets whether the error message should be considered user-friendly.
      *
      * @param userFriendly true if the message is suitable for display to the user.
-     * @return This Error instance for chaining.
+     * @return This SupabaseError instance for chaining.
      */
-    public Error setUserFriendly(boolean userFriendly) {
+    public SupabaseError setUserFriendly(boolean userFriendly) {
         isUserFriendly = userFriendly;
         return this;
     }
 
     /**
-     * Returns a string representation of this Error object.
+     * Returns a string representation of this SupabaseError object.
      *
      * @return A string containing the error message.
      */

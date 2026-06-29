@@ -2,7 +2,7 @@ package com.maskmasteruk.supabaseandroid.supabase
 
 import android.content.Context
 import android.net.Uri
-import com.maskmasteruk.supabaseandroid.objects.Error
+import com.maskmasteruk.supabaseandroid.objects.SupabaseError
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,9 +26,9 @@ object StorageBridge {
 
         /**
          * Called when the upload fails.
-         * @param error The error that occurred.
+         * @param supabaseError The error that occurred.
          */
-        fun onError(error: Error)
+        fun onError(supabaseError: SupabaseError)
     }
 
     /**
@@ -43,9 +43,9 @@ object StorageBridge {
 
         /**
          * Called when the deletion fails.
-         * @param error The error that occurred.
+         * @param supabaseError The error that occurred.
          */
-        fun onError(error: Error)
+        fun onError(supabaseError: SupabaseError)
     }
 
     /**
@@ -77,7 +77,7 @@ object StorageBridge {
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     callback.onError(
-                        Error(e)
+                        SupabaseError(e)
                     )
                 }
             }
@@ -115,7 +115,7 @@ object StorageBridge {
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     callback.onError(
-                        Error(e)
+                        SupabaseError(e)
                     )
                 }
             }
@@ -153,7 +153,7 @@ object StorageBridge {
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     callback.onError(
-                        Error(e)
+                        SupabaseError(e)
                     )
                 }
             }
@@ -182,7 +182,7 @@ object StorageBridge {
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     callback.onError(
-                        Error(e)
+                        SupabaseError(e)
                     )
                 }
             }
@@ -211,7 +211,7 @@ object StorageBridge {
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     callback.onError(
-                        Error(e)
+                        SupabaseError(e)
                     )
                 }
             }

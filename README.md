@@ -84,9 +84,9 @@ AuthBridge.signIn("user@example.com", "password123", new AuthBridge.AuthCallback
     }
 
     @Override
-    public void onError(Error error) {
-        // Show error message
-        Toast.makeText(context, error.getToastMessage(), Toast.LENGTH_SHORT).show();
+    public void onError(SupabaseError supabaseError) {
+        // Show supabaseError message
+        Toast.makeText(context, supabaseError.getToastMessage(), Toast.LENGTH_SHORT).show();
     }
 });
 ```
@@ -100,8 +100,8 @@ AuthBridge.signUp("newuser@example.com", "securePassword", new AuthBridge.AuthCa
     }
 
     @Override
-    public void onError(Error error) {
-        // Handle error
+    public void onError(SupabaseError supabaseError) {
+        // Handle supabaseError
     }
 });
 ```
@@ -119,7 +119,7 @@ AuthBridge.getCurrentUser(new AuthBridge.AuthCallback() {
     }
 
     @Override
-    public void onError(Error error) { }
+    public void onError(SupabaseError supabaseError) { }
 });
 ```
 
@@ -140,8 +140,8 @@ PostgresBridge.select("profiles", null, "created_at", false, new PostgresBridge.
     }
 
     @Override
-    public void onError(Error error) {
-        Log.e("DB", error.getToastMessage());
+    public void onError(SupabaseError supabaseError) {
+        Log.e("DB", supabaseError.getToastMessage());
     }
 });
 ```
@@ -164,7 +164,7 @@ PostgresBridge.insert("profiles", data, new PostgresBridge.InsertCallback() {
     }
 
     @Override
-    public void onError(Error error) { }
+    public void onError(SupabaseError supabaseError) { }
 });
 ```
 
@@ -185,8 +185,8 @@ StorageBridge.uploadFile("avatars", "folder/photo.jpg", file, new StorageBridge.
     }
 
     @Override
-    public void onError(Error error) {
-        Log.e("Storage", "Upload failed: " + error.getToastMessage());
+    public void onError(SupabaseError supabaseError) {
+        Log.e("Storage", "Upload failed: " + supabaseError.getToastMessage());
     }
 });
 ```
@@ -200,7 +200,7 @@ StorageBridge.deleteFile("avatars", "folder/photo.jpg", new StorageBridge.Delete
     }
 
     @Override
-    public void onError(Error error) { }
+    public void onError(SupabaseError supabaseError) { }
 });
 ```
 
@@ -228,11 +228,11 @@ JsonObject fromMap = JsonUtils.mapToJsonObject(map);
 
 ## 6. Error Handling
 
-All bridge methods return a `com.maskmasteruk.supabaseandroid.objects.Error` object on failure.
+All bridge methods return a `com.maskmasteruk.supabaseandroid.objects.SupabaseError` object on failure.
 
-*   `error.getException()`: Get the raw exception.
-*   `error.getToastMessage()`: Get a user-friendly error message (translated from Supabase codes where possible).
-*   `error.toString()`: Get a debug string representation.
+*   `supabaseError.getException()`: Get the raw exception.
+*   `supabaseError.getToastMessage()`: Get a user-friendly supabaseError message (translated from Supabase codes where possible).
+*   `supabaseError.toString()`: Get a debug string representation.
 
 ---
 

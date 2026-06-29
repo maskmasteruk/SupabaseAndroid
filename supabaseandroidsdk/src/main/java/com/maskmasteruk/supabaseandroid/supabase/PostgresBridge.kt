@@ -1,6 +1,6 @@
 package com.maskmasteruk.supabaseandroid.supabase
 
-import com.maskmasteruk.supabaseandroid.objects.Error
+import com.maskmasteruk.supabaseandroid.objects.SupabaseError
 import io.github.jan.supabase.postgrest.query.filter.PostgrestFilterBuilder
 import io.github.jan.supabase.postgrest.result.PostgrestResult
 import kotlinx.coroutines.CoroutineScope
@@ -28,9 +28,9 @@ object PostgresBridge {
 
         /**
          * Called when the operation fails.
-         * @param error The error that occurred.
+         * @param supabaseError The error that occurred.
          */
-        fun onError(error: Error)
+        fun onError(supabaseError: SupabaseError)
     }
 
     /**
@@ -45,9 +45,9 @@ object PostgresBridge {
 
         /**
          * Called when the operation fails.
-         * @param error The error that occurred.
+         * @param supabaseError The error that occurred.
          */
-        fun onError(error: Error)
+        fun onError(supabaseError: SupabaseError)
     }
 
     /**
@@ -62,9 +62,9 @@ object PostgresBridge {
 
         /**
          * Called when the operation fails.
-         * @param error The error that occurred.
+         * @param supabaseError The error that occurred.
          */
-        fun onError(error: Error)
+        fun onError(supabaseError: SupabaseError)
     }
 
     /**
@@ -79,9 +79,9 @@ object PostgresBridge {
 
         /**
          * Called when the operation fails.
-         * @param error The error that occurred.
+         * @param supabaseError The error that occurred.
          */
-        fun onError(error: Error)
+        fun onError(supabaseError: SupabaseError)
     }
 
     /**
@@ -96,9 +96,9 @@ object PostgresBridge {
 
         /**
          * Called when the RPC call fails.
-         * @param error The error that occurred.
+         * @param supabaseError The error that occurred.
          */
-        fun onError(error: Error)
+        fun onError(supabaseError: SupabaseError)
     }
 
     /**
@@ -122,7 +122,7 @@ object PostgresBridge {
                 val result = PostgresManager.select(tableName, filters, orderBy, ascending)
                 withContext(Dispatchers.Main) { callback.onSuccess(result) }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) { callback.onError(Error(e)) }
+                withContext(Dispatchers.Main) { callback.onError(SupabaseError(e)) }
             }
         }
     }
@@ -144,7 +144,7 @@ object PostgresBridge {
                 val result = PostgresManager.insert(tableName, data)
                 withContext(Dispatchers.Main) { callback.onSuccess(result) }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) { callback.onError(Error(e)) }
+                withContext(Dispatchers.Main) { callback.onError(SupabaseError(e)) }
             }
         }
     }
@@ -168,7 +168,7 @@ object PostgresBridge {
                 val result = PostgresManager.update(tableName, data, filters)
                 withContext(Dispatchers.Main) { callback.onSuccess(result) }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) { callback.onError(Error(e)) }
+                withContext(Dispatchers.Main) { callback.onError(SupabaseError(e)) }
             }
         }
     }
@@ -190,7 +190,7 @@ object PostgresBridge {
                 val result = PostgresManager.delete(tableName, filters)
                 withContext(Dispatchers.Main) { callback.onSuccess(result) }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) { callback.onError(Error(e)) }
+                withContext(Dispatchers.Main) { callback.onError(SupabaseError(e)) }
             }
         }
     }
@@ -212,7 +212,7 @@ object PostgresBridge {
                 val result = PostgresManager.callRPC(functionName, params)
                 withContext(Dispatchers.Main) { callback.onSuccess(result) }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) { callback.onError(Error(e)) }
+                withContext(Dispatchers.Main) { callback.onError(SupabaseError(e)) }
             }
         }
     }
@@ -232,7 +232,7 @@ object PostgresBridge {
                 val result = PostgresManager.callRPC(functionName, buildJsonObject {  })
                 withContext(Dispatchers.Main) { callback.onSuccess(result) }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) { callback.onError(Error(e)) }
+                withContext(Dispatchers.Main) { callback.onError(SupabaseError(e)) }
             }
         }
     }
