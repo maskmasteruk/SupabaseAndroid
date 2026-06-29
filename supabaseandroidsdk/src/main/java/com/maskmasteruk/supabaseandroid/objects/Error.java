@@ -2,6 +2,8 @@ package com.maskmasteruk.supabaseandroid.objects;
 
 import androidx.annotation.NonNull;
 
+import com.maskmasteruk.supabaseandroid.CONSTANTS;
+
 /**
  * A wrapper class for exceptions and error messages to be passed back to the UI.
  * This class helps categorize errors and provides appropriate messages for display.
@@ -24,7 +26,9 @@ public class Error {
      * @param exception The exception to wrap.
      */
     public Error(Exception exception) {
-        exception.printStackTrace();
+        if (CONSTANTS.AUTH_ERROR_MESSAGES.containsValue(exception.getMessage())) {
+            setUserFriendly(true);
+        }
         this.exception = exception;
     }
 
@@ -36,7 +40,7 @@ public class Error {
      */
     public Error(String s) {
         this.exception = new Exception(s);
-        isUserFriendly = true;
+        setUserFriendly(true);
     }
 
     /**
